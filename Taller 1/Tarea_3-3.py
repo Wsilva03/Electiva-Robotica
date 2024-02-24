@@ -1,0 +1,22 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+V_max = float(input("Ingrese el voltaje inicial (V): "))
+R = float(input("Ingrese la resistencia (Ω): "))
+C = float(input("Ingrese la capacitancia (μF): "))
+    
+tiempo = np.linspace(0, 5 * R * C, 1000)
+
+# Calcular la carga y descarga del capacitor
+carga = V_max * (1 - np.exp(-tiempo / (R * C)))
+descarga = V_max * np.exp(-tiempo / (R * C))
+
+# Graficar la carga y descarga del capacitor
+plt.plot(tiempo, carga, label='Carga')
+plt.plot(tiempo, descarga, label='Descarga')
+plt.xlabel('Tiempo (s)')
+plt.ylabel('Voltaje (V)')
+plt.title('Carga y Descarga de un Capacitor en un Circuito RC')
+plt.legend()
+plt.grid(True)
+plt.show()

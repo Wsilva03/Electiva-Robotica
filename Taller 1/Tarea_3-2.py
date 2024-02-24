@@ -2,14 +2,12 @@ import numpy as np
 import matplotlib.pyplot as plt
 from scipy import signal
  
-# Solicitar al usuario que ingrese los coeficientes
-num = [float(input("Ingrese el coeficiente 'b' (numerador): "))]
-den = [1, float(input("Ingrese el coeficiente 'a1' (denominador): ")), float(input("Ingrese el coeficiente 'a0' (denominador): "))]
+num = [float(input("Ingrese el coeficiente 'K' (numerador): "))]
+den = [1, float(input("Ingrese el coeficiente 'omega_n' (denominador): ")), float(input("Ingrese el coeficiente 'Zeta' (denominador): "))]
 
 system = signal.TransferFunction(num, den)
 tiempo, respuesta = signal.step(system)
  
-# Determinar el tipo de sistema
 damping_ratio = np.sqrt(den[1]) / (2 * np.sqrt(den[0]))
 
 if damping_ratio < 1:
