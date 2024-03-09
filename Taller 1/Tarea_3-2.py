@@ -1,14 +1,19 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy import signal
- 
+numerador =[]
+denominador=[]
 num = [float(input("Ingrese el coeficiente 'K' (numerador): "))]
 den = [1, float(input("Ingrese el coeficiente 'omega_n' (denominador): ")), float(input("Ingrese el coeficiente 'Zeta' (denominador): "))]
 
-system = signal.TransferFunction(num, den)
+numerador.append(num[0] * den[1] ** 2)
+denominador.append(den[0])
+denominador.append(2 * den[2] * den[1])
+denominador.append(den[1] ** 2)
+system = signal.TransferFunction(numerador, denominador)
 tiempo, respuesta = signal.step(system)
  
-damping_ratio = np.sqrt(den[1]) / (2 * np.sqrt(den[0]))
+damping_ratio = den[2] ** 2
 
 if damping_ratio < 1:
     print("\n***El sistema es subamortiguado.***")
