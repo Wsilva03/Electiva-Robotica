@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 
 V_max = float(input("Ingrese el voltaje inicial (V): "))
 R = float(input("Ingrese la resistencia (Ω): "))
-C = float(input("Ingrese la capacitancia (μF): "))
+C = float(input("Ingrese la capacitancia (F): "))
     
 tiempo = np.linspace(0, 5 * R * C, 1000)
 
